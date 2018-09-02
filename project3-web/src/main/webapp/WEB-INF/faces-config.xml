@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<!-- Faclets ViewHandler bundle_global-->
+	<application>
+		<message-bundle>bundle.global</message-bundle>
+		<view-handler>com.sun.facelets.FaceletViewHandler
+		</view-handler>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>de</supported-locale>
+		</locale-config>
+	</application>
+	<managed-bean>
+		<managed-bean-name>IsUserInRole</managed-bean-name>
+		<managed-bean-class> org.imixs.workflow.jee.jsf.util.SecurityHashMap
+		</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>loginMB</managed-bean-name>
+		<managed-bean-class>org.imixs.workflow.jee.jsf.util.LoginMB
+		</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	
+
+	<!-- **** Application specific Beans ************* -->
+
+
+
+	
+	
+	<managed-bean>
+		<managed-bean-name>workflowMB</managed-bean-name>
+	<!-- 	
+	<managed-bean-class>org.imixs.workflow.jee.jsf.util.SimpleWorkflowController</managed-bean-class>
+	 -->
+		<managed-bean-class>devops3.WorkflowMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>workitemBlobMB</managed-bean-name>
+		<managed-bean-class>org.imixs.workflow.jee.jsf.util.BLOBWorkitemController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>teamMB</managed-bean-name>
+		<managed-bean-class>devops3.TeamMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>fileUploadBean</managed-bean-name>
+		<managed-bean-class>devops3.FileUploadBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	
+
+	<!--
+		**************************************** * Converters
+		****************************************
+	-->
+	<converter>
+		<display-name>imixs.VectorConverter
+		</display-name>
+		<converter-id>imixs.VectorConverter
+		</converter-id>
+		<converter-class> org.imixs.workflow.jee.jsf.util.VectorConverter</converter-class>
+	</converter>
+	<converter>
+		<display-name>imixs.VectorIntegerConverter
+		</display-name>
+		<converter-id>imixs.VectorIntegerConverter
+		</converter-id>
+		<converter-class> org.imixs.workflow.jee.jsf.util.VectorIntegerConverter
+		</converter-class>
+	</converter>
+	<!--
+		**************************************** * Backing Beans
+		****************************************
+	-->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/pages/wellcome.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/logout.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+			
+		<navigation-case>
+			<from-outcome>show_workitem</from-outcome>
+			<to-view-id>/pages/workflow/workitem.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>show_worklist</from-outcome>
+			<to-view-id>/pages/workflow/worklist.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>show_teamlist</from-outcome>
+			<to-view-id>/pages/config/teamlist.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>show_team</from-outcome>
+			<to-view-id>/pages/config/team.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+		
+		
+	
+	
+</faces-config>

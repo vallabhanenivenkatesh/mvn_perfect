@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/layout/template.xhtml">
+
+	<ui:define name="content">
+
+		<f:view>
+
+
+			<h:form id="team_form_id">
+
+				<h2><h:outputText value="#{global.team_form_title}" /></h2>
+
+				<!-- **** General info ***** -->
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{global.edit}" />
+					</f:facet>
+
+					<dl>
+
+						<dt><h:outputLabel for="subject_id" value="#{global.name}:">
+							<h:message style="color: red" for="subject_id" showSummary="true"
+								showDetail="true" />
+						</h:outputLabel></dt>
+						<dd><h:inputText style="width: 20em;" required="true"
+							value="#{teamMB.item['txtname']}" id="subject_id">
+						</h:inputText></dd>
+						
+						<dt><h:outputLabel value="#{global.members}:" /></dt>
+						<dd>
+						
+						<h:inputTextarea required="false"
+							converter="imixs.VectorConverter"
+							style="height: 5em; width: 10em;"
+							value="#{teamMB.itemList['members']}">
+						</h:inputTextarea>
+						</dd>
+					</dl>
+					
+				</rich:panel>
+
+			
+
+				<!-- **** Workflow Actions & History ***** -->
+
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{global.workflow}" />
+					</f:facet>
+					
+						<h:commandButton
+							actionListener="#{teamMB.doSave}" 
+							action="show_teamlist"
+							value="#{global.save}">
+						</h:commandButton>
+				
+
+					<h:commandButton value="#{global.close}"
+						action="show_teamlist" />
+
+					<h:panelGrid columns="2">
+
+						<h:outputLabel value="#{global.created}: " />
+						<h:outputText value="#{teamMB.item['$created']} ">
+							<f:convertDateTime timeZone="CEST" type="both" dateStyle="medium" />
+						</h:outputText>
+						
+						<h:outputLabel value="#{global.modified}: " />
+						<h:outputText value="#{teamMB.item['$modified']} ">
+							<f:convertDateTime timeZone="CEST" type="both" dateStyle="medium" />
+						</h:outputText>
+					
+					</h:panelGrid>
+
+				</rich:panel>
+
+
+
+			</h:form>
+		</f:view>
+	</ui:define>
+
+
+
+</ui:composition>

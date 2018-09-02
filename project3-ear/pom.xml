@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<description>jsf sample application</description>
+	<parent>
+		<artifactId>project3</artifactId>
+		<groupId>devops3</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>devops3</groupId>
+	<artifactId>project3-ear</artifactId>
+	<packaging>ear</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<version>5</version>
+					<modules>
+						<webModule>
+							<groupId>devops3</groupId>
+							<artifactId>project3-web</artifactId>
+							<contextRoot>/workflow</contextRoot>
+						</webModule>
+						<!--  -->
+						<ejbModule>
+							<groupId>devops3</groupId>
+							<artifactId>project3-ejb</artifactId>
+						</ejbModule>
+						
+						<!-- EJB JPA -->
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-jee-impl</artifactId>
+						</JarModule>	
+						
+						<!-- SOAP Service -->
+						<webModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-soap</artifactId>
+							<contextRoot>/workflow-soap</contextRoot>
+						</webModule>
+						
+						<!-- REST Service -->
+						<webModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-rest</artifactId>
+							<contextRoot>/workflow-rest</contextRoot>
+						</webModule>
+						 	
+						<!-- Imixs Shared Libs -->
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-api</artifactId>
+							
+						</JarModule>
+						
+						<!-- -->
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-xml</artifactId>
+							<!-- <bundleDir>lib</bundleDir> -->
+						</JarModule>
+						 
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-jee</artifactId>
+							<!-- <bundleDir>lib</bundleDir> -->
+						</JarModule>
+					
+					</modules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<configuration>
+							<tasks>
+								<!--
+									the Property 'autodeploy' needs to be configured in the
+									settings.xml file the property should point to the autodeploy
+									folder from app server
+								-->
+								<echo message="About to copy EAR to autodeploydirectory..." />
+								<echo>EAR:
+									${project.build.directory}/${project.build.finalName}.ear
+									autodeploy directory: ${autodeploy}</echo>
+								<copy file="${project.build.directory}/${project.build.finalName}.ear" todir="${autodeploy}" />
+								<echo message="Copied EAR to autodeploy directory." />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<!-- Imixs Workflow  -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-api</artifactId>
+			<type>jar</type>
+		</dependency>
+		<!--  -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-xml</artifactId>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-jee</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-soap</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-rest</artifactId> 
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-jee-impl</artifactId>
+			<type>jar</type>
+		</dependency>
+	
+		<!-- Application dependencies -->
+		<dependency>
+			<groupId>devops3</groupId>
+			<artifactId>project3-web</artifactId>
+			<type>war</type>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>devops3</groupId>
+			<artifactId>project3-ejb</artifactId>
+			<type>ejb</type>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

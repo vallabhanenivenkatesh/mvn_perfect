@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="text/javascript" http-equiv="Content-Script-Type" />
+<meta content="text/css" http-equiv="Content-Style-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="Imixs Workflow" name="keywords" />
+
+
+<title><ui:insert name="title">#{global.application_title}</ui:insert></title>
+<link
+	href="#{facesContext.externalContext.requestContextPath}/layout/css/basic.css"
+	charset="UTF-8" type="text/css" rel="stylesheet" />
+
+
+</head>
+
+
+<body>
+
+<f:view>
+	<f:loadBundle basename="bundle.global" var="global" />
+	<div id="imixs-servicenav"><ui:insert name="servicenav">
+		<ui:include src="servicenav.xhtml" />
+	</ui:insert></div>
+
+	<div id="imixs-header"><ui:insert name="header">
+		<ui:include src="header.xhtml" />
+	</ui:insert></div>
+
+	<c:if test="#{loginMB.authenticated}">
+		<div id="imixs-nav"><ui:insert name="nav">
+			<ui:include src="nav.xhtml" />
+		</ui:insert></div>
+	</c:if>
+	
+	<div id="imixs-sidebar"><ui:insert name="sidebar">
+		<ui:include src="sidebar.xhtml" />
+	</ui:insert></div>
+
+	<div id="imixs-content"><ui:insert name="content">
+		<h2>Default Content</h2>
+	</ui:insert></div>
+
+	<div id="imixs-footer"><ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert></div>
+
+</f:view>
+</body>
+
+
+
+</html>

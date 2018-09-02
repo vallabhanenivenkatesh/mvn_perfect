@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/layout/template.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+
+
+			<h:form id="workitem_form_id">
+
+				<h2><h:outputText value="#{global.form_title}" /></h2>
+
+
+				<!-- Error  -->
+				<ui:include src="error.xhtml" />
+				<!-- **** General info ***** -->
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{global.edit}" />
+					</f:facet>
+
+					<dl>
+						<dt><h:outputLabel for="subject_id" value="#{global.subject}">
+							<h:message style="color: red" for="subject_id" showSummary="true"
+								showDetail="false" />
+						</h:outputLabel></dt>
+						<dd><h:inputText style="width: 20em;" required="true"
+							value="#{workflowMB.item['txtSubject']}" id="subject_id">
+						</h:inputText></dd>
+
+						<dt><h:outputLabel for="team_id" value="Team:">
+							<h:message style="color: red" for="team_id" showSummary="true"
+								showDetail="false" />
+						</h:outputLabel></dt>
+						<dd><h:selectOneMenu id="team_id"
+							value="#{workflowMB.item['team']}" required="true">
+							<f:selectItem required="true"
+								itemLabel="#{global.please_select}"
+								itemValue="" />
+							<f:selectItems value="#{teamMB.teamSelection}" />
+						</h:selectOneMenu></dd>
+					</dl>
+
+
+				</rich:panel>
+
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{global.details}" />
+					</f:facet>
+					<rich:editor id="abstract_id" theme="advanced" plugins="fullscreen"
+						value="#{workflowMB.item['htmlabstract']}">
+						<f:param name="theme_advanced_buttons1"
+							value="fullscreen,undo,redo,cleanup,|,formatselect,bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,insertdate,inserttime,hr,outdent,indent,|,link,unlink" />
+						<f:param name="theme_advanced_buttons2" value="" />
+						<f:param name="theme_advanced_buttons3" value="" />
+						<f:param name="theme_advanced_toolbar_location" value="top" />
+						<f:param name="theme_advanced_toolbar_align" value="left" />
+						<f:param name="width" value="95%" />
+						<f:param name="height" value="100" />
+					</rich:editor>
+				</rich:panel>
+
+
+				<!-- **** Fileupload ***** -->
+				<ui:include src="/pages/workflow/sub_attachements.xhtml" />
+
+				<!-- **** Workflow Actions & History ***** -->
+				<ui:include src="/pages/workflow/sub_workflowtoolbar.xhtml" />
+
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

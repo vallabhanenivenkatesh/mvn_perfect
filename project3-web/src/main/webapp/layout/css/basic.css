@@ -1,0 +1,360 @@
+/* Start Reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	xvertical-align: middle;
+	background: transparent;
+}
+
+body {
+	line-height: 1.333;
+}
+
+/* End Reset 
+dl, dt, dd, ol, ul, li,
+*/ /**********************************************
+ * Basis Einstellungen 
+ **********************************************/
+html,body,div,p,h1,h2,h3,ul,ol,span,a,table,td,form,img,li {
+	font-family: Arial, Verdana, sans-serif;
+	/* Verdana, Helvetica, Geneva, sans-serif; */
+}
+
+body {
+	color: black;
+	background-color: white;
+	font-size: 100.01%;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	margin: 0;
+	padding: 1em;
+	min-width: 41em;
+	font-style: normal;
+	/* Mindestbreite verhindert Umbruch und Anzeigefehler in modernen Browsern */
+}
+
+* html div#content {
+	height: 1em;
+	/* Workaround gegen den 3-Pixel-Bug des Internet Explorer bis Version 6 */
+}
+
+p {
+	font-size: small;
+	margin-bottom: 0.5em;
+}
+
+h1 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 0.7em;
+	margin-top: 0.3em;
+}
+
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 0.7em;
+	margin-top: 0.3em;
+}
+
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 0.7em;
+	margin-top: 0.3em;
+}
+
+input[type="text"],input[type="password"],textarea {
+	width: 20em;
+	border-color: silver;
+}
+
+input.rich-combobox-button,input.rich-combobox-button-inactive,input.rich-combobox-button-disabled
+	{
+	width: 17px;
+}
+
+dd {
+	margin: 0em 0em 1em 0em;
+	padding: 0em;
+}
+
+a {
+	color:#508AB5;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/**********************************************
+ * IMIXS Styles 
+ **********************************************/
+#imixs-servicenav {
+	clear: both;
+	padding: 1px 0 1px 0;
+	text-align: right;
+	font-size: 11px;
+	background: #FFCC00;
+	border: 0px;
+	margin: 0px 0 1px 0;
+	border-bottom: 0px solid #FFF;
+	border-top: 0px solid #FFFFFF;
+	color: #FFF;
+}
+
+#imixs-servicenav ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#imixs-servicenav li {
+	list-style: none;
+	display: inline;
+	margin: 0em 2em 0em 0em;
+	padding: 0px;
+	color: #524100;
+}
+
+#imixs-servicenav a {
+	font-size: 11px;
+	color: #524100;
+}
+
+#imixs-header {
+	clear: both;
+	width:100%;
+	height: 70px;
+	margin: 0em;
+	padding: 0em;
+	border: 0px dashed silver;
+	background-color: #80887b;
+}
+
+#imixs-header p {
+	padding: 0;
+	margin: 0;
+}
+
+#imixs-logo {
+	float: left;
+	background-image: url("logo.png");
+	background-repeat: no-repeat;
+	background-position: 10px 0px;
+	height: 70px;
+	width: 150px;	
+}
+
+#imixs-branding {
+	float: left;	
+	padding: 5px 0 0 0;
+}
+
+.imixs-brandingtext1 {
+	text-align: left;
+	font-size: 26px;
+	font-weight: bold;
+	border: 0px;
+	padding: 0 0 0 5px;
+	color: #FFF;
+}
+.imixs-brandingtext2 {
+	text-align: left;
+	font-size: 22px;
+	font-weight: bold;
+	border: 0px;
+	padding: 0 0 0 5px;
+	color: #dbcbab;
+}
+
+.imixs-brandingtext3 {
+	text-align: right;
+	font-size: 16px;
+	font-weight: normal;
+	border: 0px;
+	padding: 0 0 0 7px;
+	color: #fff;
+}
+
+
+
+#imixs-nav {
+	clear: both;
+	margin-top: 1px;
+}
+
+.imixs-menubar {
+	background-color: #EEE;
+	background-image: none;
+	border: 0px;	
+}
+
+
+
+#imixs-sidebar {
+	border-color: silver;
+	border-style: dashed dashed dashed solid;
+	border-width: 0px 0px 0px 1px;
+	float: right;
+	font-size: 11px;
+	margin: 3em 0em 0em;
+	padding: 1em;
+	width: 11em;
+}
+
+.imixs-news {
+	color: #666666;
+	margin: 0px;
+	padding: 0px 0px 10px;
+	text-align: left;
+	width: 100px;
+}
+
+.imixs-news h1 {
+	font-size:12px;
+}
+
+#imixs-content {
+	margin: 2em 10em 0em 1em;
+	padding: 0em;
+	border: 0px dashed silver;	
+}
+
+#imixs-footer {
+	clear: both;
+	color: #999;
+	margin: 1em 10em 0em 0em;
+	padding: 0em 0em;
+	text-align: right;
+	border: 0px dashed silver;
+	border-top: 1px solid silver;
+}
+
+#imixs-footer ul {
+	list-style-type: none;
+	margin: 0px;
+	font-size: 11px;
+	/* 0.6em */
+}
+
+#imixs-footer li {
+	list-style: none;
+	display: inline;
+	margin: 0em 0em 0em 1.5em;
+}
+
+/* 
+ * Die Klasse viewentry wird für die Darstellung von Views verwendet.
+ * die Klasse wird als RowClass im element rich:dataList  verwendet
+ * font-size: 0.8em
+ */
+.imixs-viewentry {
+	font-size: 12px;
+	/* 0.8em */
+	list-style: none;
+	color: #666;
+	margin: 0em 0em 0em 0em;
+	padding: 0.3em 0em 0.5em 0em;
+	border-top: 1px solid silver;
+}
+
+.imixs-viewentry  a {
+	font-size: 14px;
+	/* 1.2em */
+}
+
+.imixs-viewentry-details {
+	margin: 0em 2em 0em 2em;
+	padding: 0em 0em 0em 0em;
+	background-color: #FFF;
+	border-top: 1px solid silver;
+}
+
+.imixs-viewentry-details h2,h3,h4,a {
+	font-size: 12px;
+	/* 1em */
+}
+
+.imixs-viewentry-nav {
+	margin: 0.2em 0em 0.4em 0em;
+	padding: 0;
+}
+
+.imixs-viewentry-nav li {
+	display: inline;
+	list-style: none;
+	text-transform: uppercase;
+	font-size: 11px;
+	/* 0.65em */
+	margin: 0em 0.5em 0em 0em;
+}
+
+.imixs-viewentry-nav a {
+	font-size: 11px;
+}
+
+.imixs-html {
+	margin: 20;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+	color: black;
+	background: transparent;
+}
+
+.imixs-html a,.imixs-html a:VISITED {
+	text-decoration: none;
+	color: blue;
+	background: transparent;
+}
+
+.imixs-html a:HOVER,.imixs-html a:ACTIVE {
+	text-decoration: underline;
+	color: blue;
+	background: transparent;
+}
+
+/* RichFaces DropDown Menu */
+.rich-toolbar-item {
+	margin: 0em;
+	padding:0pt 1em 0pt 0pt;
+	color: #000;	
+}
+.dr-label-text-decor {
+	font-weight: bold;
+	font-size: 11px;
+}
+
+/* RichFaces panel */
+.rich-panel {
+	margin-bottom: 11px;
+	border: 0px;
+}
+.rich-panel-header {
+	background-color: #FFF;
+ 	background-image: none;
+	border: 0px;
+	border-bottom: 1px solid #FFCC00;	
+}
+.rich-stglpanel {
+	margin-bottom: 11px;
+}
+
+/*
+ * Helper Class für rowClasses Style in PanelGrids
+ */
+.vertTop {
+	vertical-align: top;
+}

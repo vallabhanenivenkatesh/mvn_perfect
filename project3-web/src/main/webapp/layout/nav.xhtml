@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:form>
+
+		<rich:toolBar styleClass="imixs-menubar"
+			rendered="#{loginMB.authenticated}">
+
+			<!-- Create workitem -->
+			<c:if test="#{loginMB.authenticated}">
+				
+				<!-- Worklist  -->
+				<rich:dropDownMenu>
+					<f:facet name="label">
+						<h:outputText value="#{global.my_work}" />
+					</f:facet>
+					
+					<rich:menuGroup value="#{global.create_menu_new}">
+						<c:forEach items="#{workflowMB.startProcessList}" var="process">
+							<rich:menuItem submitMode="server"
+								value="#{process.item['txtworkflowgroup']}"
+								actionListener="#{workflowMB.doCreateWorkitem}"
+								action="show_workitem">
+								<f:param name="id"
+									value="#{process.item['$modelversion']}|#{process.item['numProcessID']}" />
+							</rich:menuItem>
+						</c:forEach>
+					</rich:menuGroup>
+					
+					<rich:menuItem submitMode="server"
+						value="#{global.open_worklist_by_creator}"
+						actionListener="#{workflowMB.doSwitchToWorklistByCreator}"
+						action="show_worklist">
+					</rich:menuItem>
+					<rich:menuItem submitMode="server"
+						value="#{global.open_worklist_by_author}"
+						actionListener="#{workflowMB.doSwitchToWorklistByAuthor}"
+						action="show_worklist">
+					</rich:menuItem>
+					<rich:menuItem submitMode="server"
+						value="#{global.open_worklist_by_owner}"
+						actionListener="#{workflowMB.doSwitchToWorklistByOwner}"
+						action="show_worklist">
+					</rich:menuItem>
+
+				</rich:dropDownMenu>
+				
+				<!-- Configuration  -->
+				<rich:dropDownMenu rendered="#{IsUserInRole['org.imixs.ACCESSLEVEL.MANAGERACCESS']}">
+					<f:facet name="label">
+						<h:outputText value="#{global.configuration_menu}" />
+					</f:facet>
+					<rich:menuItem submitMode="server"
+						value="#{global.open_team_configuration}"
+						actionListener="#{teamMB.doReset}"
+						action="show_teamlist">
+					</rich:menuItem>
+				</rich:dropDownMenu>
+				
+			</c:if>
+		</rich:toolBar>
+
+
+
+	</h:form>
+</ui:composition>
+
+

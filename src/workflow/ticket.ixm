@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Imixs IX XML Model  -  www.imixs.com-->
+<model>
+  <configuration>
+    <environments>
+      <environment name="environment.servertyp">
+        <itemcollection>
+          <item name="sync_type">
+            <value>REST Service</value>
+          </item>
+          <item name="type">
+            <value>WorkflowEnvironmentEntity</value>
+          </item>
+          <item name="txtname">
+            <value>environment.servertyp</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+        </itemcollection>
+      </environment>
+      <environment name="environment.profile">
+        <itemcollection>
+          <item name="txtplugins">
+            <value>org.imixs.workflow.plugins.AccessPlugin</value>
+            <value>org.imixs.workflow.plugins.OwnerPlugin</value>
+            <value>org.imixs.workflow.plugins.HistoryPlugin</value>
+            <value>org.imixs.workflow.plugins.ResultPlugin</value>
+            <value>org.imixs.workflow.plugins.LogPlugin</value>
+            <value>org.imixs.workflow.plugins.ApplicationPlugin</value>
+          </item>
+          <item name="type">
+            <value>WorkflowEnvironmentEntity</value>
+          </item>
+          <item name="keydebuglevel">
+            <value>2</value>
+          </item>
+          <item name="txtworkflowmodelid">
+            <value>none</value>
+          </item>
+          <item name="txtfieldmapping">
+            <value>Team | team</value>
+            <value>Creator | namCreator</value>
+            <value>CurrentEditor | namCurrentEditor</value>
+          </item>
+          <item name="txtworkflowmodelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="txtname">
+            <value>environment.profile</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+        </itemcollection>
+      </environment>
+      <environment name="environment.ixrcp">
+        <itemcollection>
+          <item name="type">
+            <value>WorkflowEnvironmentEntity</value>
+          </item>
+          <item name="txtname">
+            <value>environment.ixrcp</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+        </itemcollection>
+      </environment>
+      <environment name="environment.webservice">
+        <itemcollection>
+          <item name="type">
+            <value>WorkflowEnvironmentEntity</value>
+          </item>
+          <item name="txtname">
+            <value>environment.webservice</value>
+          </item>
+          <item name="service_location">
+            <value>http://localhost:8080/workflow-rest/model</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+        </itemcollection>
+      </environment>
+    </environments>
+  </configuration>
+  <processgroup name="Ticket">
+    <processentity id="10" name="new Ticket">
+      <itemcollection>
+        <item name="txtworkflowsummary">
+          <value>&lt;field&gt;txtsubject&lt;/field&gt;</value>
+        </item>
+        <item name="numprocessid" type="number">
+          <value>10</value>
+        </item>
+        <item name="type">
+          <value>ProcessEntity</value>
+        </item>
+        <item name="txtworkflowgroup">
+          <value>Ticket</value>
+        </item>
+        <item name="txtname">
+          <value>new Ticket</value>
+        </item>
+        <item name="$modelversion">
+          <value>1.0.0</value>
+        </item>
+      </itemcollection>
+      <activityentity id="10" name="submit" nextid="20">
+        <itemcollection>
+          <item name="keylogtimeformat">
+            <value>3</value>
+          </item>
+          <item name="rtfdescription">
+            <value/>
+          </item>
+          <item name="keyarchive">
+            <value>0</value>
+          </item>
+          <item name="type">
+            <value>ActivityEntity</value>
+          </item>
+          <item name="keyaccessmode">
+            <value>1</value>
+          </item>
+          <item name="numnextprocessid" type="number">
+            <value>20</value>
+          </item>
+          <item name="keyscheduledactivity">
+            <value>0</value>
+          </item>
+          <item name="keyversion">
+            <value>0</value>
+          </item>
+          <item name="keyaddwritefields">
+            <value>team</value>
+          </item>
+          <item name="numnextactivityid" type="number">
+            <value>0</value>
+          </item>
+          <item name="keyfollowup">
+            <value>2</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="keypublicresult">
+            <value>1</value>
+          </item>
+          <item name="numactivityid" type="number">
+            <value>10</value>
+          </item>
+          <item name="keylogdateformat">
+            <value>2</value>
+          </item>
+          <item name="numprocessid" type="number">
+            <value>10</value>
+          </item>
+          <item name="txtnextprocesstree">
+            <value/>
+          </item>
+          <item name="keyownershipfields">
+            <value>team</value>
+          </item>
+          <item name="numnextid" type="number">
+            <value>20</value>
+          </item>
+          <item name="txtactivityresult">
+            <value>show_worklist</value>
+          </item>
+          <item name="txtname">
+            <value>submit</value>
+          </item>
+          <item name="keyownershipmode">
+            <value>0</value>
+          </item>
+          <item name="rtfresultlog">
+            <value>ticket updated by &lt;field&gt;namcurrentEditor&lt;/field&gt;</value>
+          </item>
+        </itemcollection>
+      </activityentity>
+    </processentity>
+    <processentity id="20" name="open">
+      <itemcollection>
+        <item name="txtworkflowsummary">
+          <value>&lt;field&gt;txtsubject&lt;/field&gt;</value>
+        </item>
+        <item name="numprocessid" type="number">
+          <value>20</value>
+        </item>
+        <item name="type">
+          <value>ProcessEntity</value>
+        </item>
+        <item name="txtworkflowgroup">
+          <value>Ticket</value>
+        </item>
+        <item name="txtname">
+          <value>open</value>
+        </item>
+        <item name="$modelversion">
+          <value>1.0.0</value>
+        </item>
+      </itemcollection>
+      <activityentity id="10" name="save" nextid="20">
+        <itemcollection>
+          <item name="keylogtimeformat">
+            <value>3</value>
+          </item>
+          <item name="rtfdescription">
+            <value/>
+          </item>
+          <item name="keyarchive">
+            <value>0</value>
+          </item>
+          <item name="type">
+            <value>ActivityEntity</value>
+          </item>
+          <item name="keyaccessmode">
+            <value>1</value>
+          </item>
+          <item name="numnextprocessid" type="number">
+            <value>20</value>
+          </item>
+          <item name="keyscheduledactivity">
+            <value>0</value>
+          </item>
+          <item name="keyversion">
+            <value>0</value>
+          </item>
+          <item name="keyaddwritefields">
+            <value>team</value>
+          </item>
+          <item name="numnextactivityid" type="number">
+            <value>0</value>
+          </item>
+          <item name="keyfollowup">
+            <value>2</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="keypublicresult">
+            <value>1</value>
+          </item>
+          <item name="numactivityid" type="number">
+            <value>10</value>
+          </item>
+          <item name="keylogdateformat">
+            <value>2</value>
+          </item>
+          <item name="numprocessid" type="number">
+            <value>20</value>
+          </item>
+          <item name="txtnextprocesstree">
+            <value/>
+          </item>
+          <item name="keyownershipfields">
+            <value>team</value>
+          </item>
+          <item name="numnextid" type="number">
+            <value>20</value>
+          </item>
+          <item name="txtactivityresult">
+            <value>show_workitem</value>
+          </item>
+          <item name="txtname">
+            <value>save</value>
+          </item>
+          <item name="keyownershipmode">
+            <value>0</value>
+          </item>
+          <item name="rtfresultlog">
+            <value>ticket updated by &lt;field&gt;namcurrentEditor&lt;/field&gt;</value>
+          </item>
+        </itemcollection>
+      </activityentity>
+      <activityentity id="20" name="accept" nextid="30">
+        <itemcollection>
+          <item name="keylogtimeformat">
+            <value>3</value>
+          </item>
+          <item name="rtfdescription">
+            <value/>
+          </item>
+          <item name="keyarchive">
+            <value>0</value>
+          </item>
+          <item name="type">
+            <value>ActivityEntity</value>
+          </item>
+          <item name="keyaccessmode">
+            <value>0</value>
+          </item>
+          <item name="numnextprocessid" type="number">
+            <value>30</value>
+          </item>
+          <item name="keyscheduledactivity">
+            <value>0</value>
+          </item>
+          <item name="keyversion">
+            <value>0</value>
+          </item>
+          <item name="keyaddwritefields">
+            <value>namCurrentEditor</value>
+          </item>
+          <item name="numnextactivityid" type="number">
+            <value>0</value>
+          </item>
+          <item name="keyfollowup">
+            <value>2</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="keypublicresult">
+            <value>1</value>
+          </item>
+          <item name="numactivityid" type="number">
+            <value>20</value>
+          </item>
+          <item name="keylogdateformat">
+            <value>2</value>
+          </item>
+          <item name="numprocessid" type="number">
+            <value>20</value>
+          </item>
+          <item name="txtnextprocesstree">
+            <value/>
+          </item>
+          <item name="keyownershipfields">
+            <value>namCurrentEditor</value>
+          </item>
+          <item name="numnextid" type="number">
+            <value>20</value>
+          </item>
+          <item name="txtactivityresult">
+            <value>show_worklist</value>
+          </item>
+          <item name="txtname">
+            <value>accept</value>
+          </item>
+          <item name="keyownershipmode">
+            <value>0</value>
+          </item>
+          <item name="rtfresultlog">
+            <value>ticket accepted by &lt;field&gt;namcurrentEditor&lt;/field&gt;</value>
+          </item>
+        </itemcollection>
+      </activityentity>
+    </processentity>
+    <processentity id="30" name="in process">
+      <itemcollection>
+        <item name="txtworkflowsummary">
+          <value>&lt;field&gt;txtsubject&lt;/field&gt;</value>
+        </item>
+        <item name="numprocessid" type="number">
+          <value>30</value>
+        </item>
+        <item name="type">
+          <value>ProcessEntity</value>
+        </item>
+        <item name="txtworkflowgroup">
+          <value>Ticket</value>
+        </item>
+        <item name="txtname">
+          <value>in process</value>
+        </item>
+        <item name="$modelversion">
+          <value>1.0.0</value>
+        </item>
+      </itemcollection>
+      <activityentity id="10" name="save" nextid="30">
+        <itemcollection>
+          <item name="keylogtimeformat">
+            <value>3</value>
+          </item>
+          <item name="rtfdescription">
+            <value/>
+          </item>
+          <item name="keyarchive">
+            <value>0</value>
+          </item>
+          <item name="type">
+            <value>ActivityEntity</value>
+          </item>
+          <item name="keyaccessmode">
+            <value>1</value>
+          </item>
+          <item name="numnextprocessid" type="number">
+            <value>30</value>
+          </item>
+          <item name="keyscheduledactivity">
+            <value>0</value>
+          </item>
+          <item name="keyversion">
+            <value>0</value>
+          </item>
+          <item name="numnextactivityid" type="number">
+            <value>0</value>
+          </item>
+          <item name="keyfollowup">
+            <value>2</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="keypublicresult">
+            <value>1</value>
+          </item>
+          <item name="numactivityid" type="number">
+            <value>10</value>
+          </item>
+          <item name="keylogdateformat">
+            <value>2</value>
+          </item>
+          <item name="numprocessid" type="number">
+            <value>30</value>
+          </item>
+          <item name="numnextid" type="number">
+            <value>30</value>
+          </item>
+          <item name="txtnextprocesstree">
+            <value/>
+          </item>
+          <item name="txtactivityresult">
+            <value>show_workitem</value>
+          </item>
+          <item name="txtname">
+            <value>save</value>
+          </item>
+          <item name="keyownershipmode">
+            <value>1</value>
+          </item>
+          <item name="rtfresultlog">
+            <value>ticket updated by &lt;field&gt;namcurrentEditor&lt;/field&gt;</value>
+          </item>
+        </itemcollection>
+      </activityentity>
+      <activityentity id="20" name="solve" nextid="90">
+        <itemcollection>
+          <item name="keylogtimeformat">
+            <value>3</value>
+          </item>
+          <item name="rtfdescription">
+            <value/>
+          </item>
+          <item name="keyarchive">
+            <value>0</value>
+          </item>
+          <item name="type">
+            <value>ActivityEntity</value>
+          </item>
+          <item name="keyaccessmode">
+            <value>0</value>
+          </item>
+          <item name="numnextprocessid" type="number">
+            <value>90</value>
+          </item>
+          <item name="keyscheduledactivity">
+            <value>0</value>
+          </item>
+          <item name="keyversion">
+            <value>0</value>
+          </item>
+          <item name="numnextactivityid" type="number">
+            <value>0</value>
+          </item>
+          <item name="keyfollowup">
+            <value>2</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="keypublicresult">
+            <value>1</value>
+          </item>
+          <item name="numactivityid" type="number">
+            <value>20</value>
+          </item>
+          <item name="keylogdateformat">
+            <value>2</value>
+          </item>
+          <item name="numprocessid" type="number">
+            <value>30</value>
+          </item>
+          <item name="numnextid" type="number">
+            <value>30</value>
+          </item>
+          <item name="txtnextprocesstree">
+            <value/>
+          </item>
+          <item name="txtactivityresult">
+            <value>show_worklist</value>
+          </item>
+          <item name="txtname">
+            <value>solve</value>
+          </item>
+          <item name="keyownershipmode">
+            <value>0</value>
+          </item>
+          <item name="rtfresultlog">
+            <value>ticket solved by &lt;field&gt;namcurrentEditor&lt;/field&gt;</value>
+          </item>
+        </itemcollection>
+      </activityentity>
+      <activityentity id="30" name="reopen" nextid="10">
+        <itemcollection>
+          <item name="keylogtimeformat">
+            <value>3</value>
+          </item>
+          <item name="rtfdescription">
+            <value/>
+          </item>
+          <item name="keyarchive">
+            <value>0</value>
+          </item>
+          <item name="type">
+            <value>ActivityEntity</value>
+          </item>
+          <item name="keyaccessmode">
+            <value>1</value>
+          </item>
+          <item name="numnextprocessid" type="number">
+            <value>10</value>
+          </item>
+          <item name="keyscheduledactivity">
+            <value>0</value>
+          </item>
+          <item name="keyversion">
+            <value>0</value>
+          </item>
+          <item name="keyaddwritefields">
+            <value>namCreator</value>
+          </item>
+          <item name="numnextactivityid" type="number">
+            <value>0</value>
+          </item>
+          <item name="keyfollowup">
+            <value>2</value>
+          </item>
+          <item name="$modelversion">
+            <value>1.0.0</value>
+          </item>
+          <item name="keypublicresult">
+            <value>1</value>
+          </item>
+          <item name="numactivityid" type="number">
+            <value>30</value>
+          </item>
+          <item name="keylogdateformat">
+            <value>2</value>
+          </item>
+          <item name="numprocessid" type="number">
+            <value>30</value>
+          </item>
+          <item name="txtnextprocesstree">
+            <value/>
+          </item>
+          <item name="keyownershipfields">
+            <value>team</value>
+          </item>
+          <item name="numnextid" type="number">
+            <value>10</value>
+          </item>
+          <item name="txtactivityresult">
+            <value>show_workitem</value>
+          </item>
+          <item name="txtname">
+            <value>reopen</value>
+          </item>
+          <item name="keyownershipmode">
+            <value>0</value>
+          </item>
+          <item name="rtfresultlog">
+            <value>ticket reopend by &lt;field&gt;namcurrentEditor&lt;/field&gt;</value>
+          </item>
+        </itemcollection>
+      </activityentity>
+    </processentity>
+    <processentity id="90" name="closed">
+      <itemcollection>
+        <item name="txtworkflowsummary">
+          <value>&lt;field&gt;txtsubject&lt;/field&gt;</value>
+        </item>
+        <item name="numprocessid" type="number">
+          <value>90</value>
+        </item>
+        <item name="type">
+          <value>ProcessEntity</value>
+        </item>
+        <item name="txtworkflowgroup">
+          <value>Ticket</value>
+        </item>
+        <item name="txtname">
+          <value>closed</value>
+        </item>
+        <item name="$modelversion">
+          <value>1.0.0</value>
+        </item>
+      </itemcollection>
+    </processentity>
+  </processgroup>
+</model>

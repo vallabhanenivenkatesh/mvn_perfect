@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>devops3</groupId>
+	<artifactId>project3</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+    <modules>
+                <module>project3-ejb</module>
+                <module>project3-web</module>
+                <module>project3-ear</module>
+    </modules>
+	<organization>
+		<name>Imixs Software Solutions GmbH</name>
+		<url>http://www.imixs.com</url>
+	</organization>
+	<scm>
+		<url>https://imixs-workflow.dev.java.net/source/browse/imixs-workflow/</url>
+	</scm>
+	<licenses>
+		<license>
+			<name>GNU General Public License</name>
+			<url>http://www.gnu.org/licenses/gpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.sun.facelets</groupId>
+				<artifactId>jsf-facelets</artifactId>
+				<version>1.1.15</version>
+			</dependency>
+
+			<!-- RichFaces -->
+			<dependency>
+				<groupId>org.richfaces.ui</groupId>
+				<artifactId>richfaces-ui</artifactId>
+				<version>3.3.0.GA</version>
+				<!-- last version 3.2.1.GA   SR1  GA 3.2.2.SR1    3.3.0.BETA2/ -->
+			</dependency>
+
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-api</artifactId>
+				<version>2.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-jee</artifactId>
+				<version>2.1.1</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-jee-impl</artifactId>
+				<version>2.1.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-jsf</artifactId>
+				<version>2.1.0</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-xml</artifactId>
+				<version>2.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-rest</artifactId>
+				<version>2.1.0</version>
+				<type>war</type>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-soap</artifactId>
+				<version>2.1.0</version>
+				<type>war</type>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+		<!-- JEE Dependencies -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+
+</project>

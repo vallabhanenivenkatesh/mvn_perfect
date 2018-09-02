@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/layout/template.xhtml">
+
+	<ui:define name="content">
+		<f:view>
+
+
+			<h:form id="teamlistForm">
+
+				<h2><h:outputText value="#{global.team_form_title}" /></h2>
+
+
+				<rich:dataTable id="datatable_id" columns="7"
+					value="#{teamMB.teams}" var="record">
+					<f:facet name="caption">
+						<h:outputText value="#{global.team_sub_title_all}" />
+					</f:facet>
+					
+				
+					<rich:column sortBy="#{record.item['txtName']}" sortable="true" sortExpression="#{record.item['txtName']}">
+						<f:facet name="header">
+							<h:outputText value="Name" />
+						</f:facet>
+							<h:outputText value="#{record.item['txtName']} " />
+					</rich:column>
+					
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{global.modified}" />
+						</f:facet>
+						<h:outputText value="#{record.item['$modified']}">
+							<f:convertDateTime type="both" dateStyle="short"
+								pattern="dd.MM.yy HH:mm:ss" />
+						</h:outputText>
+					</rich:column>
+
+				
+
+			<!-- edit -->
+					<rich:column>						
+						<h:commandLink actionListener="#{teamMB.doEdit}"
+							action="show_team">
+							<h:outputText value="#{global.edit}" />
+						</h:commandLink>
+					</rich:column>
+
+			<!-- delete -->
+					<rich:column>
+						<h:commandLink value="#{global.delete}"
+							action="show_teamlist"
+							actionListener="#{teamMB.doDelete}">
+						</h:commandLink>
+					</rich:column>
+
+
+
+
+				</rich:dataTable>
+
+				<h:commandButton actionListener="#{teamMB.doLoadPrev}"
+					disabled="#{teamMB.row==0}" value="#{global.prev}">
+				</h:commandButton>
+
+				<h:commandButton actionListener="#{teamMB.doLoadNext}"
+					disabled="#{teamMB.endOfList}" value="#{global.next}">
+				</h:commandButton>
+
+				<h:commandButton actionListener="#{teamMB.doCreate}"
+					action="show_team" value="#{global.add}">
+					
+				</h:commandButton>
+
+
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

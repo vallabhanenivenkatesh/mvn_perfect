@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/layout/template.xhtml">
+
+	<ui:define name="content">
+	
+		<f:view>
+
+
+			<h:form>
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{global.worklist}" />
+					</f:facet>
+
+					<h:dataTable value="#{workflowMB.workitems}" var="workitem">
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{global.creator}" />
+							</f:facet>
+							<h:outputText value="#{workitem.item['namcreator']}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{global.subject}" />
+							</f:facet>
+							<h:outputText value="#{workitem.item['txtSubject']}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{global.created}" />
+							</f:facet>
+							<h:outputText value="#{workitem.item['$created']}">
+								<f:convertDateTime timeZone="CET" type="date" dateStyle="medium" />
+							</h:outputText>
+						</h:column>
+
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{global.status}" />
+							</f:facet>
+							<h:outputText value="#{workitem.item['txtworkflowstatus']}" />
+						</h:column>
+
+
+						<h:column>
+							<h:commandLink value="#{global.edit}"
+								actionListener="#{workflowMB.doEdit}"
+								rendered="#{workitem.item['$isAuthor']}" action="show_workitem">
+							</h:commandLink>
+							<rich:spacer width="20" />
+						</h:column>
+
+						<h:column>
+							<h:commandLink value="#{global.delete}"
+								actionListener="#{workflowMB.doDelete}"
+								rendered="#{workitem.item['$isAuthor']}" action="show_worklist">
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+				</rich:panel>
+
+
+				<h:commandButton actionListener="#{workflowMB.doLoadPrev}"
+					action="show_worklist" rendered="#{workflowMB.row>0}"
+					value="&lt;&lt; #{global.prev}">
+				</h:commandButton>
+				<h:commandButton actionListener="#{workflowMB.doLoadNext}"
+					action="show_worklist" rendered="#{!workflowMB.endOfList}"
+					value="#{global.next} &gt;&gt;">
+				</h:commandButton>
+
+
+
+
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:form>
+		<ul>
+			<!--  Singed in user -->
+			<c:if test="#{loginMB.authenticated}">
+				<li><b><h:outputText
+					value="#{global.logged_in}: #{loginMB.userPrincipal}" /></b></li>
+
+				<li><h:commandLink actionListener="#{loginMB.doLogout}"
+					action="logout" value="#{global.log_out}"/></li>
+			</c:if>
+
+
+
+			<li><a href="http://www.imixs.org">Workflow</a></li>
+			<li><a href="http://www.imixs.com">Imixs.com</a></li>
+			<li><a href="http://www.imixs.com/forum">Forum</a></li>
+			<li><a
+				href="#{facesContext.externalContext.requestContextPath}/">Home</a>
+			</li>
+		</ul>
+
+	</h:form>
+</ui:composition>
+
+

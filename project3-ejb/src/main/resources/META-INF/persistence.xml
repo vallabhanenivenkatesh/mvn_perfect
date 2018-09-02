@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+	<!--
+		Imixs JPA definition Make sure that the imixs-workflow-jee library
+		version maches the version provided by the EAR/EJB
+	-->
+
+	<!-- eclipselink -->
+	<persistence-unit name="org.imixs.workflow.jee.jpa" transaction-type="JTA">	
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>	
+		<jta-data-source>jdbc/workflow-db</jta-data-source>
+		<jar-file>imixs-workflow-jee-2.1.1.jar</jar-file>
+		<properties>
+			<property name="eclipselink.ddl-generation"
+				value="create-tables" />
+			<property name="eclipselink.logging.level" value="INFO"/>
+		</properties>				
+	</persistence-unit>
+	
+	
+	<!-- toplink 
+	<persistence-unit name="org.imixs.workflow.jee.jpa">
+		<jta-data-source>jdbc/workflow-db</jta-data-source>
+		<jar-file>lib/imixs-workflow-jee-2.1.1.jar</jar-file>
+		<properties>
+			<property name="toplink.ddl-generation"
+				value="create-tables" />
+		</properties>
+	</persistence-unit>
+	-->
+	
+</persistence>

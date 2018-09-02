@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="sywappWebApp_ID" version="2.5">
+	<display-name>org.imixs.shareyourwork.sywadmin
+	</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX
+		</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.FACELETS_REFRESH_PERIOD
+		</param-name>
+		<param-value>2</param-value>
+	</context-param>
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>	
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD
+		</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.validateXml
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.verifyObjects
+		</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.ajax4jsf.VIEW_HANDLERS
+		</param-name>
+		<param-value>com.sun.facelets.FaceletViewHandler
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.ajax4jsf.COMPRESS_SCRIPT
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.ajax4jsf.COMPRESS_STYLE
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.LoadStyleStrategy
+		</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.LoadScriptStrategy
+		</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+	<filter>
+		<display-name>Ajax4jsf Filter</display-name>
+		<filter-name>ajax4jsf</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+		<init-param>
+			<param-name>createTempFiles</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxRequestSize</param-name>
+			<!-- 1MB -->
+			<param-value>1048576</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ajax4jsf</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!--  Imixs Rest Service   - simple servlet implementation
+	 <servlet>
+		 <description></description>
+		 <display-name>RestService</display-name>
+		 <servlet-name>RestService</servlet-name>
+		 <servlet-class> org.imixs.workflow.jee.rest.WorkflowRestService 
+		 </servlet-class>
+	 </servlet>
+	-->
+	<!--  Imixs Rest Service   - JAX-RS implementation 
+	<servlet>
+		<servlet-name>RestService</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>org.imixs.workflow.jee.rest.jaxrs</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	-->
+	
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- BASIC Login - used for REST Service -->
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>imixsrealm</realm-name>
+	</login-config>
+	
+	 
+	<!-- FORM Login
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>imixsrealm</realm-name>
+		<form-login-config>
+			<form-login-page>/login.jsf</form-login-page>
+			<form-error-page>/loginerror.jsf</form-error-page>
+		</form-login-config>
+	</login-config>
+	 -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>restricted</web-resource-name>
+			<url-pattern>/pages/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>org.imixs.ACCESSLEVEL.READERACCESS
+			</role-name>
+			<role-name>org.imixs.ACCESSLEVEL.AUTHORACCESS
+			</role-name>
+			<role-name>org.imixs.ACCESSLEVEL.EDITORACCESS
+			</role-name>
+			<role-name>org.imixs.ACCESSLEVEL.MANAGERACCESS
+			</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>restricted</web-resource-name>
+			<url-pattern>/RestService/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>org.imixs.ACCESSLEVEL.MANAGERACCESS
+			</role-name>
+		</auth-constraint>
+	
+	
+	</security-constraint>
+	
+	<security-role>
+		<role-name>org.imixs.ACCESSLEVEL.NOACCESS
+		</role-name>
+	</security-role>
+	<security-role>
+		<role-name>org.imixs.ACCESSLEVEL.READERACCESS
+		</role-name>
+	</security-role>
+	<security-role>
+		<role-name>org.imixs.ACCESSLEVEL.AUTHORACCESS
+		</role-name>
+	</security-role>
+	<security-role>
+		<role-name>org.imixs.ACCESSLEVEL.EDITORACCESS
+		</role-name>
+	</security-role>
+	<security-role>
+		<role-name>org.imixs.ACCESSLEVEL.MANAGERACCESS
+		</role-name>
+	</security-role>
+</web-app>
